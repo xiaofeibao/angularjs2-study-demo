@@ -1,0 +1,32 @@
+<!Doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<title>02使用angularJS实现文本框和按钮效果</title>
+</head>
+<!--
+	ng-app指令和ng-controller指令不能在同一层dom对象上，必须是ng-app包含ng-controller，一个模块中可以有多个控制器
+	ng-app指令的作用：
+		声明当前dom被angularJS这个库当中定义的一个模块所托管		
+	-->
+<body ng-controller="DemoController"><!--通过ng-app指令指定当前模块使用myApp  ng-controller指令指定当前的控制器-->
+	<input type="text" id="value" ng-model="value"><!--html代码还是跟普通的angularJS一样写，不同的是我们会写相对应的调用方式-->
+		<!--通过ng-model指令做数据绑定，这里的value也是$scope中的value-->
+	<input type="button" id="btn" value="*2" ng-click="doCalc()"><!--通过ng-click指定点击事件，是$scope中的doCalc()-->
+	<script src="node_modules/angular/angular.js"></script><!--找到angular.js,它是angularJS的主文件-->
+	<script>
+		//脚本中的函数应该由自制型函数开始，它会创建临时的作用域，控制当前代码不会污染全局环境
+		(function(window){//传进去window对象
+			var myApp = window.angular.module('myApp',[]);//1.通过angular注册一个模块，第一个对象传入模块名，angular是模块化的，如果我们需要用到其他
+				//模块，可以把其他模块的名字放在第二个参数（数组）当中,创建完模块后的返回值是当前模块的对象
+			myApp.controller('DemoController',function($scope){//2.给模块创建控制器,第一个参数是控制器的名称，第二个参数是控制器的控制逻辑
+				//控制逻辑中有一个默认的参数：$scope
+				$scope.value = 0;//给scope加上属性value，并赋值0
+				$scope.doCalc = function(){//点击按钮的时候有点击事件，通过scope暴露出去
+					$scope.value = $scope.value * 2;					
+				};				
+			});
+		})(window);
+	</script>
+</body>
+</html>
