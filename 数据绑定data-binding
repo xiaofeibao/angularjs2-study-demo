@@ -1,0 +1,27 @@
+<!Doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>TODOMVC-AngularJS</title>
+</head>
+<!--
+	ng-app指令和ng-controller指令不能在同一层dom对象上，必须是ng-app包含ng-controller，一个模块中可以有多个控制器
+	ng-app指令的作用：
+		声明当前dom被angularJS这个库当中定义的一个模块所托管		
+	-->
+<body>
+	<div ng-app ng-init="name='zhangsan'">
+		<p>在输入框中尝试输入:</p>
+		<p>姓名：
+			<input type="text" ng-model="name"><!--ng-model将属性值name绑定到文本框中，2者会同步发生变化
+				我们改name也是同时在改文本框的value-->
+		</p>
+		<p>{{name}}</p>
+	</div>
+	<script src="node_modules/angular/angular.js"></script>
+	<!--
+		1.网页加载完成过后，angular.js脚本会自动执行;
+		2.执行过程主要是去界面上找到ng-app指令，该指令标识当前元素被Angular管理
+	-->
+</body>
+</html>
