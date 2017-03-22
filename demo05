@@ -1,0 +1,56 @@
+<!Doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>04任务列表-angular</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/
+		bootstrap.css"><!--y引入bootstrap文件-->
+	<style>
+		body.container{
+			min-width: 600px;
+		}
+		.checkbox{
+			margin-bottom: 0px;
+		}
+	</style>
+</head>
+<body class="container">
+	<header><!--html5引入的标题-->
+		<h1 class="display-3">任务列表<h1><!--h1本身比较小,用bootstrap提供的display-3样式会大一点-->
+		<hr><!--分割线-->
+	</header>
+	<section><!--正文区域内容:即除标题栏以外的内容-->
+		<form class="input-group input-group-lg"><!--文本框组:界面不需要跳转，所以可以没有action事件
+			input-group-lg这里用bootstrap中的超大号文本框组-->
+			<input type="text" class="form-control"><!--form-control样式来自于bootstrap-->
+			<!--添加按钮：通过span里面放置button的方式去实现-->
+			<span class="input-group-btn">
+				<button class="btn btn-secondary">添加</button>
+			</span>
+		</form>
+		<ul class="list-group m-y-2"><!--列表组,bootstrap提供的m-y-2表示跟上面在y轴方向上有一个2倍的间距-->
+			<li class="list-group-item">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox">
+						<span>学英文</span>
+					</label>
+				</div>
+			</li>
+		</ul>
+		<ul class="list-group"><!--列表组-->
+			<li class="list-group-item">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox">
+						<span>学英文</span>
+					</label>
+				</div>
+			</li>
+		</ul>
+		<!--p标签去呈现文本,strong标签去加粗-->
+		<p>总共<strong>10</strong>个任务，已完成<strong>5</strong>个</p>		
+	</section>
+	<script src="node_modules/angular/angular.js"></script>
+</body>
+</html>
